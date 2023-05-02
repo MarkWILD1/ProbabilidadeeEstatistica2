@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de frecuencia con amplitud</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tabla de frecuencia con clases de amplitud</h1>
+        <input type="number" id="inputNumber" placeholder="Ingrese un número">
+        <button id="addNumber">Agregar número</button>
+        <button id="sortNumbers">Ordenar números</button>
+        <ul id="numberList"></ul>
+        <h2>Tabla de frecuencia absoluta y relativa</h2>
+        <table id="frequencyTable" class="frequency-table">
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Frecuencia absoluta</th>
+                    <th>Frecuencia relativa</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <h2>Tabla de clases de amplitud</h2>
+        <input type="number" id="inputAmplitude" placeholder="Ingrese la amplitud">
+        <table id="amplitudeTable" class="frequency-table">
+            <thead>
+                <tr>
+                    <th>Clase de amplitud</th>
+                    <th>Frecuencia absoluta</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <p class="footer-text">Developed by Marcos Mello - Tads 2do semestre</p>
+        <p class="footer-text" id="dateTime"></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

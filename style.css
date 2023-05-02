@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+button {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+input[type="number"] {
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+}
+
+.frequency-table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+.frequency-table th,
+.frequency-table td {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+}
+
+.frequency-table thead {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    padding: 20px 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-text {
+    font-size: 16px;
+    text-align: center;
+    color: #212529;
+}
