@@ -4,12 +4,19 @@ document.getElementById("inputAmplitude").addEventListener("input", updateAmplit
 
 const numbers = [];
 
+function updateNumberCount() {
+    const count = numbers.length;  // a quantidade de números é o tamanho da lista
+    document.getElementById('count').textContent = "Quantidade de números: " + count;
+}
+
+
 function addNumber() {
     const inputNumber = document.getElementById("inputNumber");
     const number = parseInt(inputNumber.value);
 
     if (!isNaN(number)) {
         numbers.push(number);
+        updateNumberCount();
         updateList();
     }
 
@@ -19,6 +26,10 @@ function addNumber() {
 function sortNumbers() {
     numbers.sort((a, b) => a - b);
     updateList();
+}
+
+function calculateSum(numbers) {
+    return numbers.reduce((a, b) => a + b, 0);
 }
 
 function updateList() {
@@ -128,3 +139,89 @@ function updateDateTime() {
 
 updateDateTime();
 setInterval(updateDateTime, 1000);
+
+function calculateStatistics() {
+    console.log('Calculating statistics...');
+
+    if (numbers.length > 0) {
+        const mean = calculateMean(numbers);
+        const sum = calculateSum(numbers);
+        const variance = calculateVariance(numbers, mean);
+        const stdDev = Math.sqrt(variance);
+        const median = calculateMedian(numbers);  // Calcula a mediana
+
+        document.getElementById('sum').textContent = "Soma: " + sum;
+        document.getElementById('mean').textContent = "Media: " + mean.toFixed(2);
+        document.getElementById('variance').textContent = "Variancia: " + variance.toFixed(2);
+        document.getElementById('stdDev').textContent = "Desvio Padrão: " + stdDev.toFixed(2);
+        document.getElementById('median').textContent = "Mediana: " + median.toFixed(2); // Exibe a mediana
+    } else {
+        document.getElementById('mean').textContent = "Media: N/A";
+        document.getElementById('variance').textContent = "Variancia: N/A";
+        document.getElementById('stdDev').textContent = "Desvio Padrão: N/A";
+        document.getElementById('median').textContent = "Mediana: N/A";  // Exibe 'N/A' para mediana se a lista estiver vazia
+        document.getElementById('sum').textContent = "Soma: N/A";
+    }
+}
+
+
+function calculateMean(numbers) {
+    const sum = numbers.reduce((a, b) => a + b, 0);
+    return sum / numbers.length;
+}
+
+function calculateVariance(numbers, mean) {
+    return numbers.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b, 0) / numbers.length;
+}
+
+function calculateMedian(numbers) {
+    if (numbers.length === 0) return 0;
+
+    numbers.sort((a, b) => a - b);
+
+    const half = Math.floor(numbers.length / 2);
+
+    if (numbers.length % 2)
+        return numbers[half];
+    else
+        return (numbers[half - 1] + numbers[half]) / 2.0;
+}
+
+
+function updateList() {
+    const numberList = document.getElementById("numberList");
+    numberList.innerHTML = "";
+
+    if (numbers.length > 0) {
+        let listText = "";
+        
+        numbers.forEach((number, index) => {
+            listText += number;
+            if (index < numbers.length - 1) {  // Se não for o último número, adicione " - "
+                listText += " - ";
+            }
+        });
+
+        numberList.textContent = listText;
+    }
+
+    updateFrequencyTable();
+    calculateStatistics(); // Isso deve chamar calculateStatistics sempre que a lista for atualizada
+}
+
+
+const inputNumber = document.getElementById("inputNumber");
+
+inputNumber.addEventListener("keyup", function(event) {
+    // Número 13 é a tecla Enter
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        // Chame a função addNumber quando Enter for pressionado
+        addNumber();
+    }
+});
+
+
+
+
+
